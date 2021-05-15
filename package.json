@@ -31,5 +31,6 @@
     "babel-preset-env": "^1.7.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.17.5"
-  }
+  },
+  "type": "module"
 }
