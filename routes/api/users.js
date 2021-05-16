@@ -1,6 +1,6 @@
-import { Router } from 'express';
+const { Router } =require( 'express');
 // User Model
-import User from '../../models/User';
+const User =require( '../../models/User.js');
 
 const router = Router();
 
@@ -20,4 +20,4 @@ router.get('/', async (req, res) => {
   }
 });
 
-export default router;
+// export default router;

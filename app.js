@@ -1,15 +1,12 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import path from 'path';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import morgan from 'morgan';
-import config from './config';
+const express =require( 'express');
+const mongoose =require( 'mongoose');
+const path =require( 'path');
+const cors =require( 'cors');
+const bodyParser =require( 'body-parser');
+const morgan =require( 'morgan');
+const config =require( './config/index.js');
 
-// routes
-import authRoutes from './routes/api/auth';
-import itemRoutes from './routes/api/items';
-import userRoutes from './routes/api/users';
+
 
 const { MONGO_URI, MONGO_DB_NAME } = config;
 
@@ -36,9 +33,9 @@ mongoose
   .catch(err => console.log(err));
 
 // Use Routes
-app.use('/api/items', itemRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/auth', authRoutes);
+app.use('/api/items', require( './routes/api/auth'));
+app.use('/api/users', require( './routes/api/items'));
+app.use('/api/auth', require( './routes/api/users'));
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
@@ -50,4 +47,4 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-export default app;
+// export default app;

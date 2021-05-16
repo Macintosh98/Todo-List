@@ -1,7 +1,8 @@
-import { Schema, model } from 'mongoose';
+// import { Schema, model } from 'mongoose';
+const mongoose = require('mongoose');
 
 // Create Schema
-const ItemSchema = new Schema({
+const ItemSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -12,6 +13,6 @@ const ItemSchema = new Schema({
   }
 });
 
-const Item = model('item', ItemSchema);
+const Item = mongoose.model('item', ItemSchema);
 
-export default Item;
+// export default Item;

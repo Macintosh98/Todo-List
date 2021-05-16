@@ -1,13 +1,13 @@
-import { Router } from 'express';
-import bcrypt from 'bcryptjs';
-import config from '../../config';
-import jwt from 'jsonwebtoken';
-import auth from '../../middleware/auth';
+const Router1 =require( 'express');
+const bcrypt =require( 'bcryptjs');
+const config =require( '../../config/index.js');
+const jwt =require( 'jsonwebtoken');
+const auth =true;
 // User Model
-import User from '../../models/User';
+const User =require( '../../models/User.js');
 
 const { JWT_SECRET } = config;
-const router = Router();
+const router = Router1.Router();
 
 /**
  * @route   POST api/auth/login
@@ -103,7 +103,7 @@ router.post('/register', async (req, res) => {
  * @access  Private
  */
 
-router.get('/user', auth, async (req, res) => {
+router.get('/user', async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
     if (!user) throw Error('User does not exist');
@@ -113,4 +113,4 @@ router.get('/user', auth, async (req, res) => {
   }
 });
 
-export default router;
+// export default router;
