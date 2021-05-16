@@ -3,7 +3,7 @@ const app=express();
 // const { v4: uuidv4 } = require('uuid');
 var bodyParser = require('body-parser')
 // const { unlink } = require('fs');
-
+const path =require( 'path');
 // const nodemailer = require('nodemailer');
 // const fileupload = require('express-fileupload')
 // app.use(fileupload())
@@ -45,4 +45,14 @@ app.get("/list",(req,res)=>{
 
 })
 
+
+// if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('client/build'));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+//   }
+  
 
